@@ -26,4 +26,6 @@ jobs:
     - name: Brakeman scan
       run: ./bin/brakeman -o brakeman-report.md && cat brakeman-report.md
     - name: Run tests
-      run: ./bin/rails db:test:prepare && bundle exec rake
+      run: ./bin/rails db:test:prepare
+    - name: Run tests
+      run: bundle exec rake
