@@ -1,0 +1,36 @@
+
+default: &default
+  adapter: postgresql
+  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  user: rails
+  password: railsrocks
+  database: landwatcher
+  timeout: 5000
+
+development:
+  <<: *default
+  database: landwatcher_development
+
+test:
+  <<: *default
+  database: landwatcher_test
+
+
+# Store production database in the storage/ directory, which by default
+# is mounted as a persistent Docker volume in config/deploy.yml.
+production:
+  primary:
+    <<: *default
+    database: landwatcher
+  cache:
+    <<: *default
+    database: landwatcher
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *default
+    database: landwatcher
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *default
+    database: landwatcher
+    migrations_paths: db/cable_migrate
