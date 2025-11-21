@@ -14,6 +14,7 @@ gem "image_processing", "~> 1.2"
 gem "rack-cors"
 
 group :development, :test do
+  gem "sqlite3"
   gem "rspec-rails"
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "bundler-audit", require: false

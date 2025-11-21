@@ -12,6 +12,7 @@ development:
   database: landwatcher_development
 
 test:
+  adapter: sqlite3
   <<: *default
   database: landwatcher_test
 
