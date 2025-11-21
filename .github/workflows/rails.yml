@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v5
-    - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.2' # 3.4 not available
-        # would be nice to build for 3.x and others as required but overkill for poc
+        bundler-cache: true
+        # would be nice to build for other 3.x as required but overkill for poc
     - name: Install dependencies
       run: bundle install
     - name: Rubocop on the beat
