@@ -16,8 +16,13 @@ PostgreSQL 17.6
 Assuming the dependancies from tool versions are setup running the project should be pretty simple.
 Setup:
 * `git clone ...`
-* update `config/database.yml` with your username and password
 * `bundle install`
+* update `config/database.yml` with your username and password
+* `rails db:create db:migrate db:seed`
+* `./bin/rubocop`
+* `./bin/brakeman`
+* `./bin/bundler-audit`
+* `bundle exec rspec` or `rake`
 
 Run the Project:
 * `rails server`
@@ -30,8 +35,8 @@ Some items may span phases and move around as the project progresses and uncompl
 
 Phase 1 - setup and infra
 [x] Backend: Ruby on Rails
-[ ] Requirement: public GitHub repo
-[ ] Backend: RSpec tests for critical paths
+[x] Requirement: public GitHub repo
+[x] Backend: RSpec tests for critical paths - gh actions ci pipeline
 [ ] Frontend: Modern React
 [ ] Frontend: Jest/React Testing Library tests
 [ ] Quality: Testing approach and coverage - gh actions automations
