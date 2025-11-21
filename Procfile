@@ -1,0 +1,2 @@
+web: PORT=3000 yarn --cwd client dev
+api: PORT=3001 bundle exec rails server

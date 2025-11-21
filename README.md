@@ -25,7 +25,10 @@ Setup:
 * `bundle exec rspec` or `rake`
 
 Run the Project:
-* `rails server`
+* `rails server --port 3001`
+* `yarn --cwd client dev`
+or with foreman
+* `foreman start`
 
 
 ## Plan Breakdown and Checklist
@@ -34,10 +37,11 @@ This section would normaly be kept in a notes file apart from the repository, bu
 Some items may span phases and move around as the project progresses and uncompleted checklist items generally chagne over time as the project progresses and the requirements crystalize. Life and software are both a bit messy.
 
 Phase 1 - setup and infra
+Hopefully the longest part of the project, getting everything setup with running ci to ensure independant builds and tests. Would have been nice to add docker builds to the pipeline, but left out for berevity as they are not used in deployment.
 [x] Backend: Ruby on Rails
 [x] Requirement: public GitHub repo
 [x] Backend: RSpec tests for critical paths - gh actions ci pipeline
-[ ] Frontend: Modern React
+[x] Frontend: Modern React
 [ ] Frontend: Jest/React Testing Library tests
 [ ] Quality: Testing approach and coverage - gh actions automations
 [ ] Bonus: Deployment considerations (Docker, environment config) - early calls - mock docker build?
