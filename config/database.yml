@@ -12,9 +12,9 @@ development:
   database: landwatcher_development
 
 test:
-  adapter: sqlite3
   <<: *default
-  database: landwatcher_test
+  adapter: sqlite3
+  database: db/landwatcher_test.sqlite3
 
 
 # Store production database in the storage/ directory, which by default
