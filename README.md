@@ -33,6 +33,9 @@ Run the Project:
 or with foreman
 * `foreman start`
 
+test api is up:
+* `curl localhost:3001/properties`
+
 
 ## Plan Breakdown and Checklist
 
@@ -59,21 +62,63 @@ One of the best bits of `bullet` is getting live feedback in rails. I susspect w
 [x] Quality: Code organization and readability - documentation and cleanup of unused components
 
 ### Phase 2 - design and db spike
-[ ] Backend: RESTful API design
-[ ] Backend: PostgreSQL database with proper schema design
-[ ] Frontend: State management descision: Context API v Redux
-[ ] Frontend: Proper component structure and organization
-[ ] Criteria: Architecture & Design
-[ ] Criteria: API design and RESTful patterns
-[ ] Criteria: Database schema and relationship modeling
-[ ] Criteria: Component architecture and separation of concerns
-[ ] Performance: Database indexing strategy
-[ ] Requirement: implicit rails api to serve data
+
+Required Tables and Fields:
+properties
+  - title/name: implied by search - string
+  - description: implied by search - text
+  - price: implied by filtering - integer cents - money gem overkill?
+  - bedrooms: implied by filtering
+    - int field - seems too specific - what about bathrooms next week
+    - has many sub-type: rooms? - overkill?
+    - json list of rooms? - akward?
+  - type: implied by filtering
+    - enum?
+
+realisticly the types of rooms that would be counted would be both finite and small, so maybe in fields for bedrooms, bathrooms, garage spots would be fine. since the problem does not imply enough context to determine if the requirement will likely change i'll probaly just add an int field.
+
+similarly with type, in a real world scenario there could be sub-types or room counts dependant on type (don't list the number of bowling lanes if the type isn't mansion). but again as specified i think an int backed enum would do the job for the project as stated.
+
+although with a simplified single table structure it's hard to avoid n+1 queries... am i missing something? maybe take the complex room structure for the sake of another table?
+
+Also, How can I separate concerns if ther is only a single model? even if i break out the room types into a second model there is not really going to be much concern to break out. I'm kind of struggling how to demonstrate how to demonstrate good design and relationship modeling on such a simple setup. Maybe some of it refers to the react components, but n+1 queries are explicitly called out.
+
+Adding in Users and Watchlist adds some complexity I suppose. The interface for user switching is never mentioned, but implies the existance of a users table, and watchlist will be a many to many relation between users and properties, ok, some room for n+1 queries there. Alternativly the watchlist could be stored similar to tags as a string of identifiers in a text/json field on the user model, on a large enough set of users and properties this could be more efficient than filtering a whole table for the watchlist and also introduce isolation between users data.
+
+So we end up with something like:
+
+Property:
+  - title - string - index for search
+  - description: - text - index for search
+  - price: integer cents - index for filter
+  - bedrooms: int - index for filter
+  - type: int enum - index for filter
+
+User:
+  - name - string
+  - email - string - devise
+  - password... - string - devise
+
+Watch
+  - user - relation - index for watchlist
+  - property - relation
+
+[x] Backend: PostgreSQL database with proper schema design
+[x] Performance: Database indexing strategy
+[x] Criteria: Database schema and relationship modeling
+[x] Criteria: Architecture & Design
+[x] Criteria: API design and RESTful patterns
+[x] Backend: RESTful API design - rspec enforced
+[x] Requirement: implicit - rails api to serve data
+[ ] setup devise for user and auth
 [ ] Performance: metrics specs
+[ ] Criteria: Component architecture and separation of concerns
 
 ### Phase 3 - basic ui spinup and auth
 [ ] Backend: ActionCable for WebSocket connections
 [ ] Backend: Authentication system (JWT or sessions)
+[ ] Frontend: Proper component structure and organization
+[ ] Frontend: State management descision: Context API v Redux
 [ ] Frontend: React hooks
 [ ] Frontend: WebSocket integration for real-time updates
 [ ] Functional: Property search interface with results display
@@ -92,6 +137,7 @@ One of the best bits of `bullet` is getting live feedback in rails. I susspect w
 [ ] Performance: Infinite scroll implementation
 
 ### Phase 6 - watchlist
+[ ] Required: user selection / login
 [ ] Functional: Ability to save/remove properties to/from a personal watchlist
 [ ] Functional: users can search listings and save favorites to a watchlist.
 
