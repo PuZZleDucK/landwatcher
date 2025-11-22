@@ -121,18 +121,18 @@ Setting up devise turned out to be more difficult with the api only rails setup 
 
 ### Phase 3 - basic ui spinup and auth
 
-I have used action cable before to provide live updates to rails views, but am unsure how they fit in with the React frontend. Perhaps it could be used to provide live updates to react in a similar way, but i'm pushing it back until there is a ui to update.
+I have used action cable before to provide live updates to rails views, but am unsure how they fit in with the React frontend. Perhaps it could be used to provide live updates to react in a similar way, but how does that fit with react requesting the data and doing dynamic updates, i'm pushing it back until there is a ui to update.
 
 Mocked up a basic UI in react, some room for improvment in the way the tools overlay the results, but good enought for a poc. Should be simple to move the tools above the listings as the screen narrows into a mobile display, but transitioning from a list to something like cards would also be nice to have.
 
-
+Threading the listing through to the frontend seems like a logical place to start with react hooks, simple proof of concept to list all properties done. Day one down and still five phases to go, striking out any optional or streatch goals and start on authentication tomorrow. Still unsure about how to thread the user through from an api only app without something like a 'current user' api, maybe break with the api-only model for devise or something. Had an idea over dinner to show a login form in the nav bar, fingers crossed react has a session cookie or something similar i could bundle in with that and send rails a request like: this user, with this password, wants to auth this session cookie. then rails could do the auth and signal back that x session is authorized by x user. Logout would then just be react forgetting or refreshing the session.
 
 
 [x] Functional: Property search interface with results display
 [x] Frontend: Proper component structure and organization
+[x] Frontend: React hooks
 [ ] Backend: Authentication system (JWT or sessions)
 [ ] Frontend: State management descision: Context API v Redux
-[ ] Frontend: React hooks
 [ ] Frontend: WebSocket integration for real-time updates
 [ ] Criteria: State management approach
 [ ] Quality: Authentication implementation
@@ -155,36 +155,36 @@ Mocked up a basic UI in react, some room for improvment in the way the tools ove
 [ ] Functional: Ability to save/remove properties to/from a personal watchlist
 [ ] Functional: users can search listings and save favorites to a watchlist.
 
-### Phase 6 - basic filtering
+### Phase 7 - basic filtering
 [ ] Functional: Filtering: Price range
 [ ] Functional: Filtering: Number of bedrooms
 [ ] Functional: Filtering: Property type (house, apartment, townhouse, etc.)
 [ ] Backend: Proper indexing on searchable fields
 
-### Phase 7 - project review
+### Phase 8 - project review
 [ ] Frontend: Performance considerations (memoization, avoiding unnecessary renders)
 [ ] Criteria: Architecture, Design and API review
 [ ] Performance: Frontend rendering optimization
 
-### Phase 8 - rate limiting
-[ ] Bonus: Rate limiting on API endpoints
+### Phase 9 - rate limiting
+[-] Bonus: Rate limiting on API endpoints
 
-### Phase 9 - caching
-[ ] Bonus: Caching strategy (Redis, HTTP caching)
+### Phase 10 - caching
+[-] Bonus: Caching strategy (Redis, HTTP caching)
 
-### Phase 10 - project review
-[ ] Bonus: Advanced search features (location-based, saved searches)
+### Phase 11 - project review
+[-] Bonus: Advanced search features (location-based, saved searches)
 
-### Phase 11 - real time updates
-[ ] Bonus: Real-time updates when a watched property changes status (e.g., price change, sold) (ActionCable/Websockets)
+### Phase 12 - real time updates
+[-] Bonus: Real-time updates when a watched property changes status (e.g., price change, sold) (ActionCable/Websockets)
 
-### Phase 12 - final review
-[ ] Bonus: Deployment considerations (actual deployment review / docs?)
+### Phase 13 - final review
+[-] Bonus: Deployment considerations (actual deployment review / docs?)
 
-### Phase 13 - other nice to haves
-[ ] react layout transitions to vertical as screen shrinks and it overlays listing
-[ ] listing transitions to card layout at mobile widths
-[ ] maybe card first listing might have worked toos
+### Phase 14 - other nice to haves
+[-] react layout transitions to vertical as screen shrinks and it overlays listing
+[-] listing transitions to card layout at mobile widths
+[-] maybe card first listing might have worked toos
 
 ## Assumptions
 This sections outlines some complications cosidered and the assumptions made about the issues.

@@ -1,6 +1,18 @@
-import reactLogo from './assets/react.svg'
+import { useEffect, useState } from 'react'
 import './Listings.css'
+import Listing from './Listing';
+
 function Listings() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+  fetch('http://localhost:3001/properties')
+    .then((data) => {
+      const textData = data.text();
+      textData.then(resolvedText => {
+        setData(JSON.parse(resolvedText));
+      });
+    });
+  }, [])
 
   return (
     <>
@@ -8,27 +20,21 @@ function Listings() {
         <h4>Listing Results:</h4>
         <div className="listingTable">
           <table>
-            <tr>
-              <th className="listingCell">ID</th>
-              <th className="listingCell">Type</th>
-              <th className="listingCell">Rooms</th>
-              <th className="listingCell">Price</th>
-            </tr>
-            <tr>
-              <td className="listingCell">1</td>
-              <td className="listingCell">filler House</td>
-              <td className="listingCell">3</td>
-              <td className="listingCell">$250,000</td>
-            </tr>
-            <tr>
-              <td className="listingCell">2</td>
-              <td className="listingCell">filler Flat</td>
-              <td className="listingCell">2</td>
-              <td className="listingCell">$150,000</td>
-            </tr>
+            <thead>
+              <tr>
+                <th className="listingCell">ID</th>
+                <th className="listingCell">Type</th>
+                <th className="listingCell">Rooms</th>
+                <th className="listingCell">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item) => (
+                <Listing key={item.id} id={item.id} name={item.title} rooms={item.bedrooms} price={item.price} />
+              ))}
+            </tbody>
           </table>
         </div>
-    
       </div>
     </>
   )

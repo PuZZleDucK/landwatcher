@@ -13,6 +13,7 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 gem "rack-cors"
 gem "devise"
+gem "rack-cors"
 
 group :development, :test do
   gem "sqlite3"

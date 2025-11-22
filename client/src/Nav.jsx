@@ -7,7 +7,7 @@ function Nav() {
       <div className="navbar">
         <img src={reactLogo} className="logo react" alt="React logo" />
         <h1>LandWatcher</h1>
-        <div>User: Placeholder</div>
+        <div>User: Placeholder - replace with login form or username and logout button</div>
       </div>
     </>
   )
