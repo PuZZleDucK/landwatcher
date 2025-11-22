@@ -103,6 +103,12 @@ Watch
   - user - relation - index for watchlist
   - property - relation
 
+Setting up devise turned out to be more difficult with the api only rails setup as it assumes a lot of views and workflows, hope that wasn't a mistake. I'd also normally add in something like flamegraph for metrics on performance, but again, normally done through the rails views and i don't want to waste time trying to thread it through to react for the poc. As a standin I have created a simple benchmark on creating, viewing and destroying a property 1000 times and including the result in the rspec output. idealy this could be pulled out and reasonable threasholds could be checked in ci. So our starting point for performance is:
+```
+   User       System     Total        Real (seconds)
+  2.875455   0.159108   3.034563 (  3.035420)
+```
+
 [x] Backend: PostgreSQL database with proper schema design
 [x] Performance: Database indexing strategy
 [x] Criteria: Database schema and relationship modeling
@@ -110,9 +116,8 @@ Watch
 [x] Criteria: API design and RESTful patterns
 [x] Backend: RESTful API design - rspec enforced
 [x] Requirement: implicit - rails api to serve data
-[ ] setup devise for user and auth
-[ ] Performance: metrics specs
-[ ] Criteria: Component architecture and separation of concerns
+[x] setup devise for user and auth
+[x] Performance: metrics specs
 
 ### Phase 3 - basic ui spinup and auth
 [ ] Backend: ActionCable for WebSocket connections
@@ -124,6 +129,7 @@ Watch
 [ ] Functional: Property search interface with results display
 [ ] Criteria: State management approach
 [ ] Quality: Authentication implementation
+[ ] Criteria: Component architecture and separation of concerns
 
 ### Phase 4 - error handling and loading states
 [ ] Backend: Error handling and validation

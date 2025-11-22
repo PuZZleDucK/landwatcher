@@ -12,6 +12,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 gem "rack-cors"
+gem "devise"
 
 group :development, :test do
   gem "sqlite3"
@@ -22,4 +23,5 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "bullet"
   gem "pry"
+  gem "database_cleaner-active_record"
 end

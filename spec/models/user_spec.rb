@@ -4,7 +4,10 @@ RSpec.describe User, type: :model do
   context 'create user' do
     it 'creates a user with valid attributes' do
       user = User.new(
-        name: 'REX'
+        name: 'REX',
+        email: 'rex@ror2.com',
+        password: 'password',
+        password_confirmation: 'password'
       )
       expect(user).to be_valid
     end

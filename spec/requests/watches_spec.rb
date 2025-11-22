@@ -1,20 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe "/watches", type: :request do
-  User.create!(name: 'REX')
-  Property.create!(title: 'Aphelian Sanctuary', description: 'Beautiful giant rings in the heart of Petrichor V.', price: 5555, bedrooms: 3, property_type: 1)
+  let(:invalid_attributes) {{}}
+  let(:valid_headers) {{}}
+  # let(:user) {
+  #   User.create!(name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password')
+  # }
+  # let(:property) {
+  #   Property.create!(title: 'Aphelian Sanctuary', description: 'Beautiful giant rings in the heart of Petrichor V.', price: 5555, bedrooms: 3, property_type: 1)
+  # }
   let(:valid_attributes) {
     {
       user_id: 1,
       property_id: 1
     }
   }
-  let(:invalid_attributes) {{}}
-  let(:valid_headers) {{}}
-
 
   describe "GET /index" do
     it "renders a successful response" do
+      # binding.pry
+      User.create!(name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password')
+      Property.create!(title: 'Aphelian Sanctuary', description: 'Beautiful giant rings in the heart of Petrichor V.', price: 5555, bedrooms: 3, property_type: 1)
       Watch.create! valid_attributes
       get watches_url, headers: valid_headers, as: :json
       expect(response).to be_successful
@@ -23,6 +29,8 @@ RSpec.describe "/watches", type: :request do
 
   describe "GET /show" do
     it "renders a successful response" do
+      User.create!(name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password')
+      Property.create!(title: 'Aphelian Sanctuary', description: 'Beautiful giant rings in the heart of Petrichor V.', price: 5555, bedrooms: 3, property_type: 1)
       watch = Watch.create! valid_attributes
       get watch_url(watch), as: :json
       expect(response).to be_successful
@@ -32,6 +40,8 @@ RSpec.describe "/watches", type: :request do
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new Watch" do
+        User.create!(name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password')
+        Property.create!(title: 'Aphelian Sanctuary', description: 'Beautiful giant rings in the heart of Petrichor V.', price: 5555, bedrooms: 3, property_type: 1)
         expect {
           post watches_url,
                params: { watch: valid_attributes }, headers: valid_headers, as: :json
@@ -39,6 +49,8 @@ RSpec.describe "/watches", type: :request do
       end
 
       it "renders a JSON response with the new watch" do
+        User.create!(name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password')
+        Property.create!(title: 'Aphelian Sanctuary', description: 'Beautiful giant rings in the heart of Petrichor V.', price: 5555, bedrooms: 3, property_type: 1)
         post watches_url,
              params: { watch: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
@@ -70,6 +82,8 @@ RSpec.describe "/watches", type: :request do
       }
 
       it "updates the requested watch" do
+        User.create!(name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password')
+        Property.create!(title: 'Aphelian Sanctuary', description: 'Beautiful giant rings in the heart of Petrichor V.', price: 5555, bedrooms: 3, property_type: 1)
         watch = Watch.create! valid_attributes
         patch watch_url(watch),
               params: { watch: new_attributes }, headers: valid_headers, as: :json
@@ -78,6 +92,8 @@ RSpec.describe "/watches", type: :request do
       end
 
       it "renders a JSON response with the watch" do
+        User.create!(name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password')
+        Property.create!(title: 'Aphelian Sanctuary', description: 'Beautiful giant rings in the heart of Petrichor V.', price: 5555, bedrooms: 3, property_type: 1)
         watch = Watch.create! valid_attributes
         patch watch_url(watch),
               params: { watch: new_attributes }, headers: valid_headers, as: :json
@@ -88,6 +104,8 @@ RSpec.describe "/watches", type: :request do
 
     context "with invalid parameters" do
       it "renders a JSON response with errors for the watch" do
+        User.create!(name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password')
+        Property.create!(title: 'Aphelian Sanctuary', description: 'Beautiful giant rings in the heart of Petrichor V.', price: 5555, bedrooms: 3, property_type: 1)
         watch = Watch.create! valid_attributes
         patch watch_url(watch),
               params: { watch: invalid_attributes }, headers: valid_headers, as: :json
@@ -99,6 +117,8 @@ RSpec.describe "/watches", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested watch" do
+      User.create!(name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password')
+      Property.create!(title: 'Aphelian Sanctuary', description: 'Beautiful giant rings in the heart of Petrichor V.', price: 5555, bedrooms: 3, property_type: 1)
       watch = Watch.create! valid_attributes
       expect {
         delete watch_url(watch), headers: valid_headers, as: :json

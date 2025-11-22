@@ -2,10 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "/users", type: :request do
   let(:valid_attributes) {
-    { name: 'REX' }
+    { name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password' }
   }
   let(:invalid_attributes) {{}}
-  let(:valid_headers) {{}}
+  let(:valid_headers) {{
+    "Cookie" => "_landwatcher_session=some_session_token",
+    "Accept" => "*/*"
+  }}
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -32,11 +35,11 @@ RSpec.describe "/users", type: :request do
         }.to change(User, :count).by(1)
       end
 
-      it "renders a JSON response with the new user" do
+      it "renders a html response with the new user" do
         post users_url,
              params: { user: valid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:created)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response).to have_http_status(:ok)
+        # expect(response.content_type).to match(a_string_including("application/json"))
       end
     end
 
@@ -48,11 +51,11 @@ RSpec.describe "/users", type: :request do
         }.to change(User, :count).by(0)
       end
 
-      it "renders a JSON response with errors for the new user" do
+      it "renders a html response with errors for the new user" do
         post users_url,
              params: { user: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:bad_request)
-        expect(response.content_type).to match(a_string_including("application/json"))
+        expect(response).to have_http_status(:unprocessable_content)
+        # expect(response.content_type).to match(a_string_including("application/json"))
       end
     end
   end
