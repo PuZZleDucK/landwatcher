@@ -4,8 +4,8 @@ RSpec.describe "/users", type: :request do
   let(:valid_attributes) {
     { name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password' }
   }
-  let(:invalid_attributes) {{}}
-  let(:valid_headers) {{
+  let(:invalid_attributes) { {} }
+  let(:valid_headers) { {
     "Cookie" => "_landwatcher_session=some_session_token",
     "Accept" => "*/*"
   }}

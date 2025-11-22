@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "/watches", type: :request do
-  let(:invalid_attributes) {{}}
-  let(:valid_headers) {{}}
+  let(:invalid_attributes) { {} }
+  let(:valid_headers) { {} }
   # let(:user) {
   #   User.create!(name: 'REX', email: 'rex@ror2.com', password: 'password', password_confirmation: 'password')
   # }

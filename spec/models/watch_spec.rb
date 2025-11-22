@@ -10,7 +10,7 @@ RSpec.describe Watch, type: :model do
         bedrooms: 3,
         property_type: 1
       )
-      
+
       expect(property).to be_valid
     end
   end

@@ -10,8 +10,8 @@ RSpec.describe "/properties", type: :request do
       property_type: 1
     }
   }
-  let(:invalid_attributes) {{}}
-  let(:valid_headers) {{}}
+  let(:invalid_attributes) { {} }
+  let(:valid_headers) { {} }
 
   describe "GET /index" do
     it "renders a successful response" do

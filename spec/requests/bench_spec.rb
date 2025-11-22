@@ -30,5 +30,4 @@ RSpec.describe "/properties", type: :request do
       puts result
     end
   end
-
 end
