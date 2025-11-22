@@ -1,0 +1,32 @@
+
+name: React CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - name: Set Node.js 24.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 24.x
+    - name: Install yarn dependencies
+      uses: borales/actions-yarn@v4
+      with:
+        dir: 'client'
+        cmd: install
+    - name: Build client
+      uses: borales/actions-yarn@v4
+      with:
+        dir: 'client'
+        cmd: build
+    - name: Test client
+      uses: borales/actions-yarn@v4
+      with:
+        dir: 'client'
+        cmd: test

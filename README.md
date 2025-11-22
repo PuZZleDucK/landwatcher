@@ -23,6 +23,9 @@ Setup:
 * `./bin/brakeman`
 * `./bin/bundler-audit`
 * `bundle exec rspec` or `rake`
+* `yarn --cwd client install`
+* `yarn --cwd client test`
+* `yarn --cwd client build` # not required for dev
 
 Run the Project:
 * `rails server --port 3001`
@@ -36,14 +39,16 @@ This section would normaly be kept in a notes file apart from the repository, bu
 
 Some items may span phases and move around as the project progresses and uncompleted checklist items generally chagne over time as the project progresses and the requirements crystalize. Life and software are both a bit messy.
 
+All specs and test are run by ci on all commits to surface issues as soon as possible. Jest setup took longer than expected, but it is the first time setting up ci and deployment for React so not that surprising i suppose. Render deployment also configured to run on all commits to master.
+
 Phase 1 - setup and infra
 Hopefully the longest part of the project, getting everything setup with running ci to ensure independant builds and tests. Would have been nice to add docker builds to the pipeline, but left out for berevity as they are not used in deployment.
 [x] Backend: Ruby on Rails
 [x] Requirement: public GitHub repo
 [x] Backend: RSpec tests for critical paths - gh actions ci pipeline
 [x] Frontend: Modern React
-[ ] Frontend: Jest/React Testing Library tests
-[ ] Quality: Testing approach and coverage - gh actions automations
+[x] Frontend: Jest/React Testing Library tests
+[x] Quality: Testing approach and coverage - gh actions automations
 [ ] Bonus: Deployment considerations (Docker, environment config) - early calls - mock docker build?
 [ ] Requirement: no ai - mock ai review action
 [ ] Performance: Query optimization (avoiding N+1 queries) - bullet - metrics specs

@@ -33,3 +33,6 @@
 
 # Test db
 db/landwatcher_test.sqlite3
+
+# Jest snampshots
+__snapshots__
