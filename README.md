@@ -35,26 +35,30 @@ or with foreman
 
 
 ## Plan Breakdown and Checklist
+
+### Phase 1 - setup and infra
 This section would normaly be kept in a notes file apart from the repository, but is included here for your consideration. I have taken the requirements, categorized and prioritized the tasks and requirements.
 
 Some items may span phases and move around as the project progresses and uncompleted checklist items generally chagne over time as the project progresses and the requirements crystalize. Life and software are both a bit messy.
 
-All specs and test are run by ci on all commits to surface issues as soon as possible. Jest setup took longer than expected, but it is the first time setting up ci and deployment for React so not that surprising i suppose. Render deployment also configured to run on all commits to master.
+All specs and test are run by ci on all commits to surface issues as soon as possible. Jest setup took longer than expected, but it is the first time setting up ci and deployment for React so not that surprising i suppose. Render deployment also configured to run on all commits to master, unfortunatly deployment only shows an empty page which i won't trouble shoot right now, but it at least exercises and verifies the deployment for the time being.
 
-Phase 1 - setup and infra
 Hopefully the longest part of the project, getting everything setup with running ci to ensure independant builds and tests. Would have been nice to add docker builds to the pipeline, but left out for berevity as they are not used in deployment.
+
+One of the best bits of `bullet` is getting live feedback in rails. I susspect without further tweaking this won't be passed through to react, i won't fiddle with this now but would find a way to surface it if the project was ongoing.
+
 [x] Backend: Ruby on Rails
 [x] Requirement: public GitHub repo
 [x] Backend: RSpec tests for critical paths - gh actions ci pipeline
 [x] Frontend: Modern React
 [x] Frontend: Jest/React Testing Library tests
 [x] Quality: Testing approach and coverage - gh actions automations
-[ ] Bonus: Deployment considerations (Docker, environment config) - early calls - mock docker build?
-[ ] Requirement: no ai - mock ai review action
-[ ] Performance: Query optimization (avoiding N+1 queries) - bullet - metrics specs
-[ ] Quality: Code organization and readability
+[x] Bonus: Deployment considerations (Docker, environment config) - early calls - mock docker build?
+[-] Requirement: no ai - mock ai review action
+[x] Performance: Query optimization (avoiding N+1 queries) - bullet
+[x] Quality: Code organization and readability - documentation and cleanup of unused components
 
-Phase 2 - design and db spike
+### Phase 2 - design and db spike
 [ ] Backend: RESTful API design
 [ ] Backend: PostgreSQL database with proper schema design
 [ ] Frontend: State management descision: Context API v Redux
@@ -64,8 +68,10 @@ Phase 2 - design and db spike
 [ ] Criteria: Database schema and relationship modeling
 [ ] Criteria: Component architecture and separation of concerns
 [ ] Performance: Database indexing strategy
+[ ] Requirement: implicit rails api to serve data
+[ ] Performance: metrics specs
 
-Phase 3 - basic ui spinup and auth
+### Phase 3 - basic ui spinup and auth
 [ ] Backend: ActionCable for WebSocket connections
 [ ] Backend: Authentication system (JWT or sessions)
 [ ] Frontend: React hooks
@@ -74,45 +80,45 @@ Phase 3 - basic ui spinup and auth
 [ ] Criteria: State management approach
 [ ] Quality: Authentication implementation
 
-Phase 4 - error handling and loading states
+### Phase 4 - error handling and loading states
 [ ] Backend: Error handling and validation
 [ ] Frontend: State management
 [ ] Frontend: Loading states
 [ ] Frontend: error states
 [ ] Quality: Error handling patterns
 
-Phase 5 - scrolling
+### Phase 5 - scrolling
 [ ] Functional: Infinite scroll or pagination for search results
 [ ] Performance: Infinite scroll implementation
 
-Phase 6 - watchlist
+### Phase 6 - watchlist
 [ ] Functional: Ability to save/remove properties to/from a personal watchlist
 [ ] Functional: users can search listings and save favorites to a watchlist.
 
-Phase 6 - basic filtering
+### Phase 6 - basic filtering
 [ ] Functional: Filtering: Price range
 [ ] Functional: Filtering: Number of bedrooms
 [ ] Functional: Filtering: Property type (house, apartment, townhouse, etc.)
 [ ] Backend: Proper indexing on searchable fields
 
-Phase 7 - project review
+### Phase 7 - project review
 [ ] Frontend: Performance considerations (memoization, avoiding unnecessary renders)
 [ ] Criteria: Architecture, Design and API review
 [ ] Performance: Frontend rendering optimization
 
-Phase 8 - rate limiting
+### Phase 8 - rate limiting
 [ ] Bonus: Rate limiting on API endpoints
 
-Phase 9 - caching
+### Phase 9 - caching
 [ ] Bonus: Caching strategy (Redis, HTTP caching)
 
-Phase 10 - project review
+### Phase 10 - project review
 [ ] Bonus: Advanced search features (location-based, saved searches)
 
-Phase 11 - real time updates
+### Phase 11 - real time updates
 [ ] Bonus: Real-time updates when a watched property changes status (e.g., price change, sold) (ActionCable/Websockets)
 
-Phase 12 - final review
+### Phase 12 - final review
 [ ] Bonus: Deployment considerations (actual deployment review / docs?)
 
 
@@ -126,4 +132,7 @@ It is likely that a real dataset would include many complications, the first one
 
 ### docker
 Considering using docker build for the ci pipline but all dev was done on local for simplicity.
+
+### ai
+I would have included a ci task to review updates to master, but decided to err on the side of caution for 'no ai'. Thought about mocking up an action, but three github actions already seemed like enough. I like actions.
 
