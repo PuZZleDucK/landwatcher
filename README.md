@@ -120,16 +120,24 @@ Setting up devise turned out to be more difficult with the api only rails setup 
 [x] Performance: metrics specs
 
 ### Phase 3 - basic ui spinup and auth
-[ ] Backend: ActionCable for WebSocket connections
+
+I have used action cable before to provide live updates to rails views, but am unsure how they fit in with the React frontend. Perhaps it could be used to provide live updates to react in a similar way, but i'm pushing it back until there is a ui to update.
+
+Mocked up a basic UI in react, some room for improvment in the way the tools overlay the results, but good enought for a poc. Should be simple to move the tools above the listings as the screen narrows into a mobile display, but transitioning from a list to something like cards would also be nice to have.
+
+
+
+
+[x] Functional: Property search interface with results display
+[x] Frontend: Proper component structure and organization
 [ ] Backend: Authentication system (JWT or sessions)
-[ ] Frontend: Proper component structure and organization
 [ ] Frontend: State management descision: Context API v Redux
 [ ] Frontend: React hooks
 [ ] Frontend: WebSocket integration for real-time updates
-[ ] Functional: Property search interface with results display
 [ ] Criteria: State management approach
 [ ] Quality: Authentication implementation
 [ ] Criteria: Component architecture and separation of concerns
+[ ] Backend: ActionCable for WebSocket connections
 
 ### Phase 4 - error handling and loading states
 [ ] Backend: Error handling and validation
@@ -173,6 +181,10 @@ Setting up devise turned out to be more difficult with the api only rails setup 
 ### Phase 12 - final review
 [ ] Bonus: Deployment considerations (actual deployment review / docs?)
 
+### Phase 13 - other nice to haves
+[ ] react layout transitions to vertical as screen shrinks and it overlays listing
+[ ] listing transitions to card layout at mobile widths
+[ ] maybe card first listing might have worked toos
 
 ## Assumptions
 This sections outlines some complications cosidered and the assumptions made about the issues.

@@ -1,0 +1,36 @@
+.tools {
+  position: fixed;
+  top: 10rem;
+  right: 5rem;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid black;
+  padding-right: 6rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  z-index: 10;
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    button {
+      font-size: 0.5rem;
+      margin-top: 0.1rem;
+    }
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      width: 5rem;
+    }
+
+  }
+
+}
