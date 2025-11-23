@@ -26,7 +26,7 @@ jobs:
     - name: Prep Test DB
       env:
         RAILS_ENV: test
-        devise_jwt_secret_key: c7501bb520d28b3942e802d39f688c025e05efafa293bc9d40bbfb9b063a7ef7d52bd81c9a8f825cf3290e3ed02bdea3e52cf30540868195ea1c8333fb855a09
+        SECRET_KEY_BASE: c7501bb520d28b3942e802d39f688c025e05efafa293bc9d40bbfb9b063a7ef7d52bd81c9a8f825cf3290e3ed02bdea3e52cf30540868195ea1c8333fb855a09
       run: ./bin/rails db:test:prepare
     - name: Run tests
       run: bundle exec rake
