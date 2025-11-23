@@ -7,12 +7,13 @@ import Footer from './Footer'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [filters, setFilters] = useState({});
 
   return (
     <>
       <Nav />
-      <Tools />
-      <Listings />
+      <Tools filters={filters} setFilters={setFilters} />
+      <Listings filters={filters} setFilters={setFilters} />
       <Footer />
     </>
   )

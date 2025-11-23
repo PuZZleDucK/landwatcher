@@ -50,16 +50,16 @@ Hopefully the longest part of the project, getting everything setup with running
 
 One of the best bits of `bullet` is getting live feedback in rails. I susspect without further tweaking this won't be passed through to react, i won't fiddle with this now but would find a way to surface it if the project was ongoing.
 
-[x] Backend: Ruby on Rails
-[x] Requirement: public GitHub repo
-[x] Backend: RSpec tests for critical paths - gh actions ci pipeline
-[x] Frontend: Modern React
-[x] Frontend: Jest/React Testing Library tests
-[x] Quality: Testing approach and coverage - gh actions automations
-[x] Bonus: Deployment considerations (Docker, environment config) - early calls - mock docker build?
-[-] Requirement: no ai - mock ai review action
-[x] Performance: Query optimization (avoiding N+1 queries) - bullet
-[x] Quality: Code organization and readability - documentation and cleanup of unused components
+- [x] Backend: Ruby on Rails
+- [x] Requirement: public GitHub repo
+- [x] Backend: RSpec tests for critical paths - gh actions ci pipeline
+- [x] Frontend: Modern React
+- [x] Frontend: Jest/React Testing Library tests
+- [x] Quality: Testing approach and coverage - gh actions automations
+- [x] Bonus: Deployment considerations (Docker, environment config) - early calls - mock docker build?
+- [-] Requirement: no ai - mock ai review action
+- [x] Performance: Query optimization (avoiding N+1 queries) - bullet
+- [x] Quality: Code organization and readability - documentation and cleanup of unused components
 
 ### Phase 2 - design and db spike
 
@@ -109,15 +109,15 @@ Setting up devise turned out to be more difficult with the api only rails setup 
   2.875455   0.159108   3.034563 (  3.035420)
 ```
 
-[x] Backend: PostgreSQL database with proper schema design
-[x] Performance: Database indexing strategy
-[x] Criteria: Database schema and relationship modeling
-[x] Criteria: Architecture & Design
-[x] Criteria: API design and RESTful patterns
-[x] Backend: RESTful API design - rspec enforced
-[x] Requirement: implicit - rails api to serve data
-[x] setup devise for user and auth
-[x] Performance: metrics specs
+- [x] Backend: PostgreSQL database with proper schema design
+- [x] Performance: Database indexing strategy
+- [x] Criteria: Database schema and relationship modeling
+- [x] Criteria: Architecture & Design
+- [x] Criteria: API design and RESTful patterns
+- [x] Backend: RESTful API design - rspec enforced
+- [x] Requirement: implicit - rails api to serve data
+- [x] setup devise for user and auth
+- [x] Performance: metrics specs
 
 ### Phase 3 - basic ui spinup and auth
 
@@ -129,24 +129,24 @@ Threading the listing through to the frontend seems like a logical place to star
 
 Looking like Devise might not be the optimal solution for rails in api mode, does not seem to like json requests and getting format errors. This seems to be forcing me down the JWT path as the only option, probably a better long term solution but not my preffered option for a 'quick project'. JWT setup on rails was reasonably painless, got react pulling login data from a form and calling the rails login api and saving it to local store unfortunatly i'm not seeing the authorization header despite getting 200 for a good email/password and 401 otherwise. Not sure how far to chase this, maybe just make a ui change based on the 200 and get on with the project. Well it seems I'm tripping over all the React newbie traps, I've tried to just set a local storage setting to color the login area based on the last login attempt, but for the life of me I can't get it to update the component without a page refresh. Even updating the login components contents do not trigger the color change. Well it's taken half of day two to fail to get the user auth working and theres still another planned phase before getting around to the first user facing feature, this feels like it's been going badly. I'm going to skip ahead a try and get a feature or two done before I run out of time completly.
 
-[x] Functional: Property search interface with results display
-[x] Frontend: Proper component structure and organization
-[x] Frontend: React hooks
-[x] Backend: login fields and current user in navbar
-[x] Backend: Authentication system (JWT or sessions)
-[x] Frontend: State management descision: Context API v Redux
-[?] Criteria: State management approach
-[-] Quality: Authentication implementation
-[?] Criteria: Component architecture and separation of concerns
-[-] Frontend: WebSocket integration for real-time updates
-[-] Backend: ActionCable for WebSocket connections
+- [x] Functional: Property search interface with results display
+- [x] Frontend: Proper component structure and organization
+- [x] Frontend: React hooks
+- [x] Backend: login fields and current user in navbar
+- [x] Backend: Authentication system (JWT or sessions)
+- [x] Frontend: State management descision: Context API v Redux
+- [x] Criteria: State management approach
+- [ ] Quality: Authentication implementation
+- [ ] Criteria: Component architecture and separation of concerns
+- [ ] Frontend: WebSocket integration for real-time updates
+- [ ] Backend: ActionCable for WebSocket connections
 
 ### Phase 4 - error handling and loading states
-[-] Backend: Error handling and validation
-[-] Frontend: State management
-[-] Frontend: Loading states
-[-] Frontend: error states
-[-] Quality: Error handling patterns
+- [ ] Backend: Error handling and validation
+- [ ] Frontend: State management
+- [ ] Frontend: Loading states
+- [ ] Frontend: error states
+- [ ] Quality: Error handling patterns
 
 ### Phase 5 - scrolling
 ok tankfully things are starting to move in the right direction. unfortunatly the infinate scroll library selected does not
@@ -155,46 +155,57 @@ would be optimal, but not on the agenda since time is running short. Functional 
 
 Next feature would have been the watch list, but i'll flip the order as filtering and serarching don't require accounts.
 
-[x] Functional: Infinite scroll or pagination for search results
-[x] Performance: Infinite scroll implementation
+- [x] Functional: Infinite scroll or pagination for search results
+- [x] Performance: Infinite scroll implementation
 
 ### Phase 6 - basic filtering
-[ ] Functional: Filtering: Price range
-[ ] Functional: Filtering: Number of bedrooms
-[ ] Functional: Filtering: Property type (house, apartment, townhouse, etc.)
-[ ] Backend: Proper indexing on searchable fields
+filters threaded throught the parent component successfully and it occurs to me that it would be nice to pull the list of
+types from the rails api to populate the type dropdown, but not going to happen today. I've just realized that i need to
+clear the listing as the filters update, tried a simple hack of passing a changed flag with the update, but realized that
+doesn't quite help me :o
+
+I think this is where I'll have to leave it. Feels pretty bad having some things like the filtering so close, but knowing even
+if i nail it, the login issues will still nag me, and again so close but defeated by React. It all looks great in the logs. Well
+thank you for hanging in if you've made it this far. Some feedback on the effort would be great, but it's not really in a state
+i'd normally share with anyone or ask for feedback, i know what most of the problems are. Still it was fun trying out React on 
+Rails and there are bit's and pieces that I'm happy with like the Rails end of the authentication and the pageless scrolling.
+
+- [ ] Functional: Filtering: Price range - partial completion
+- [ ] Functional: Filtering: Number of bedrooms
+- [ ] Functional: Filtering: Property type (house, apartment, townhouse, etc.)
+- [ ] Backend: Proper indexing on searchable fields
 
 ### Phase 7 - watchlist
-[ ] Required: user selection / login
-[ ] Functional: Ability to save/remove properties to/from a personal watchlist
-[ ] Functional: users can search listings and save favorites to a watchlist.
+- [ ] Required: user selection / login
+- [ ] Functional: Ability to save/remove properties to/from a personal watchlist
+- [ ] Functional: users can search listings and save favorites to a watchlist.
 
 ### Phase 8 - project review
-[ ] revisit login ui
-[ ] revisit docker for render deployment
-[ ] Frontend: Performance considerations (memoization, avoiding unnecessary renders)
-[ ] Criteria: Architecture, Design and API review
-[ ] Performance: Frontend rendering optimization
+- [ ] revisit login ui
+- [ ] revisit docker for render deployment
+- [ ] Frontend: Performance considerations (memoization, avoiding unnecessary renders)
+- [ ] Criteria: Architecture, Design and API review
+- [ ] Performance: Frontend rendering optimization
 
 ### Phase 9 - rate limiting
-[-] Bonus: Rate limiting on API endpoints
+- [ ] Bonus: Rate limiting on API endpoints
 
 ### Phase 10 - caching
-[-] Bonus: Caching strategy (Redis, HTTP caching)
+- [ ] Bonus: Caching strategy (Redis, HTTP caching)
 
 ### Phase 11 - project review
-[-] Bonus: Advanced search features (location-based, saved searches)
+- [ ] Bonus: Advanced search features (location-based, saved searches)
 
 ### Phase 12 - real time updates
-[-] Bonus: Real-time updates when a watched property changes status (e.g., price change, sold) (ActionCable/Websockets)
+- [ ] Bonus: Real-time updates when a watched property changes status (e.g., price change, sold) (ActionCable/Websockets)
 
 ### Phase 13 - final review
-[-] Bonus: Deployment considerations (actual deployment review / docs?)
+- [ ] Bonus: Deployment considerations (actual deployment review / docs?)
 
 ### Phase 14 - other nice to haves
-[-] react layout transitions to vertical as screen shrinks and it overlays listing
-[-] listing transitions to card layout at mobile widths
-[-] maybe card first listing might have worked toos
+- [ ] react layout transitions to vertical as screen shrinks and it overlays listing
+- [ ] listing transitions to card layout at mobile widths
+- [ ] maybe card first listing might have worked toos
 
 ## Assumptions
 This sections outlines some complications cosidered and the assumptions made about the issues.
