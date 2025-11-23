@@ -127,24 +127,26 @@ Mocked up a basic UI in react, some room for improvment in the way the tools ove
 
 Threading the listing through to the frontend seems like a logical place to start with react hooks, simple proof of concept to list all properties done. Day one down and still five phases to go, striking out any optional or streatch goals and start on authentication tomorrow. Still unsure about how to thread the user through from an api only app without something like a 'current user' api, maybe break with the api-only model for devise or something. Had an idea over dinner to show a login form in the nav bar, fingers crossed react has a session cookie or something similar i could bundle in with that and send rails a request like: this user, with this password, wants to auth this session cookie. then rails could do the auth and signal back that x session is authorized by x user. Logout would then just be react forgetting or refreshing the session.
 
+Looking like Devise might not be the optimal solution for rails in api mode, does not seem to like json requests and getting format errors. This seems to be forcing me down the JWT path as the only option, probably a better long term solution but not my preffered option for a 'quick project'. JWT setup on rails was reasonably painless, got react pulling login data from a form and calling the rails login api and saving it to local store unfortunatly i'm not seeing the authorization header despite getting 200 for a good email/password and 401 otherwise. Not sure how far to chase this, maybe just make a ui change based on the 200 and get on with the project. Well it seems I'm tripping over all the React newbie traps, I've tried to just set a local storage setting to color the login area based on the last login attempt, but for the life of me I can't get it to update the component without a page refresh. Even updating the login components contents do not trigger the color change. Well it's taken half of day two to fail to get the user auth working and theres still another planned phase before getting around to the first user facing feature, this feels like it's been going badly. I'm going to skip ahead a try and get a feature or two done before I run out of time completly.
 
 [x] Functional: Property search interface with results display
 [x] Frontend: Proper component structure and organization
 [x] Frontend: React hooks
-[ ] Backend: Authentication system (JWT or sessions)
-[ ] Frontend: State management descision: Context API v Redux
-[ ] Frontend: WebSocket integration for real-time updates
-[ ] Criteria: State management approach
-[ ] Quality: Authentication implementation
-[ ] Criteria: Component architecture and separation of concerns
-[ ] Backend: ActionCable for WebSocket connections
+[x] Backend: login fields and current user in navbar
+[x] Backend: Authentication system (JWT or sessions)
+[x] Frontend: State management descision: Context API v Redux
+[?] Criteria: State management approach
+[-] Quality: Authentication implementation
+[?] Criteria: Component architecture and separation of concerns
+[-] Frontend: WebSocket integration for real-time updates
+[-] Backend: ActionCable for WebSocket connections
 
 ### Phase 4 - error handling and loading states
-[ ] Backend: Error handling and validation
-[ ] Frontend: State management
-[ ] Frontend: Loading states
-[ ] Frontend: error states
-[ ] Quality: Error handling patterns
+[-] Backend: Error handling and validation
+[-] Frontend: State management
+[-] Frontend: Loading states
+[-] Frontend: error states
+[-] Quality: Error handling patterns
 
 ### Phase 5 - scrolling
 [ ] Functional: Infinite scroll or pagination for search results

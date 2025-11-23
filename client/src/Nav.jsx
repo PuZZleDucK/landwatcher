@@ -1,4 +1,5 @@
 import reactLogo from './assets/react.svg'
+import UserInfo from './UserInfo.jsx'
 import './Nav.css'
 function Nav() {
 
@@ -7,7 +8,7 @@ function Nav() {
       <div className="navbar">
         <img src={reactLogo} className="logo react" alt="React logo" />
         <h1>LandWatcher</h1>
-        <div>User: Placeholder - replace with login form or username and logout button</div>
+        <UserInfo />
       </div>
     </>
   )

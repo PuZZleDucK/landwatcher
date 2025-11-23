@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
   resources :watches
   resources :users
   resources :properties
@@ -10,5 +10,18 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  # i think render wants this to be set
+  root "properties#index"
+
+  Rails.application.routes.draw do
+    devise_for :users, path: "", path_names: {
+      sign_in: "login",
+      sign_out: "logout",
+      registration: "signup"
+    },
+    controllers: {
+      sessions: "users/sessions",
+      registrations: "users/registrations"
+    }
+  end
 end

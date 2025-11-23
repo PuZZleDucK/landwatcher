@@ -14,6 +14,8 @@ gem "image_processing", "~> 1.2"
 gem "rack-cors"
 gem "devise"
 gem "rack-cors"
+gem "devise-jwt"
+gem "jsonapi-serializer"
 
 group :development, :test do
   gem "sqlite3"

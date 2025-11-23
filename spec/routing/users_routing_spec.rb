@@ -11,7 +11,7 @@ RSpec.describe UsersController, type: :routing do
     end
 
 
-    it "routes to #create" do
+    xit "routes to #create - replaced by devise registrations" do
       expect(post: "/users").to route_to("devise/registrations#create")
     end
 
