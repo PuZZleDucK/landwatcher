@@ -149,21 +149,29 @@ Looking like Devise might not be the optimal solution for rails in api mode, doe
 [-] Quality: Error handling patterns
 
 ### Phase 5 - scrolling
-[ ] Functional: Infinite scroll or pagination for search results
-[ ] Performance: Infinite scroll implementation
+ok tankfully things are starting to move in the right direction. unfortunatly the infinate scroll library selected does not
+handle splitting the table after the header, so the header scrolls off the top of the page. switching over to flex divs
+would be optimal, but not on the agenda since time is running short. Functional is good enough to progress.
 
-### Phase 6 - watchlist
-[ ] Required: user selection / login
-[ ] Functional: Ability to save/remove properties to/from a personal watchlist
-[ ] Functional: users can search listings and save favorites to a watchlist.
+Next feature would have been the watch list, but i'll flip the order as filtering and serarching don't require accounts.
 
-### Phase 7 - basic filtering
+[x] Functional: Infinite scroll or pagination for search results
+[x] Performance: Infinite scroll implementation
+
+### Phase 6 - basic filtering
 [ ] Functional: Filtering: Price range
 [ ] Functional: Filtering: Number of bedrooms
 [ ] Functional: Filtering: Property type (house, apartment, townhouse, etc.)
 [ ] Backend: Proper indexing on searchable fields
 
+### Phase 7 - watchlist
+[ ] Required: user selection / login
+[ ] Functional: Ability to save/remove properties to/from a personal watchlist
+[ ] Functional: users can search listings and save favorites to a watchlist.
+
 ### Phase 8 - project review
+[ ] revisit login ui
+[ ] revisit docker for render deployment
 [ ] Frontend: Performance considerations (memoization, avoiding unnecessary renders)
 [ ] Criteria: Architecture, Design and API review
 [ ] Performance: Frontend rendering optimization

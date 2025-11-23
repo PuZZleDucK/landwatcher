@@ -3,7 +3,10 @@ class PropertiesController < ApplicationController
 
   # GET /properties
   def index
-    @properties = Property.all
+    page = params[:page].to_i || 1
+    per_page = params[:per_page].to_i || 10
+    offset = (page - 1) * per_page
+    @properties = Property.offset(offset).limit(per_page)
 
     render json: @properties
   end

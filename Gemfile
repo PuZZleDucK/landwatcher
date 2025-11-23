@@ -27,4 +27,5 @@ group :development, :test do
   gem "bullet"
   gem "pry"
   gem "database_cleaner-active_record"
+  gem "faker"
 end
