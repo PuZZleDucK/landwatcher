@@ -9,7 +9,8 @@ User.destroy_all
         name: name,
         email: "#{email_slug}@example.com",
         password: 'password',
-        password_confirmation: 'password'
+        password_confirmation: 'password',
+        devise_jwt_secret_key: SecureRandom.hex(10)
     )
 end
 
