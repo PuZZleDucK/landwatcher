@@ -8,7 +8,7 @@ class PropertiesController < ApplicationController
     offset = (page - 1) * per_page
     price_floor = params[:price_floor].present? ? params[:price_floor].to_i : 0
     price_ceiling = params[:price_ceiling].present? ? params[:price_ceiling].to_i : Float::INFINITY
-    query_params = {price: price_floor..price_ceiling}
+    query_params = { price: price_floor..price_ceiling }
 
     @properties = Property.offset(offset).where(query_params).limit(per_page)
     # note: translate the property type from react string using enum + handle 'any' on this side
