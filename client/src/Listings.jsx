@@ -34,13 +34,13 @@ function Listings( { filters } ) {
   return (
     <>
       <div className="listings">
-        <h4>Filters debug:</h4>
-        {/* <pre>{JSON.stringify(filters, null, 2)}</pre> */}
+        {/* <h4>Filters debug:</h4>
+        <pre>{JSON.stringify(filters, null, 2)}</pre>
         <span>filters.priceLowInput: {filters.priceLowInput}</span>
         <span>filters.priceHighInput: {filters.priceHighInput}</span>
         <span>filters.bedroomsInput: {filters.bedroomsInput}</span>
         <span>filters.typeSelect: {filters.typeSelect}</span>
-        <span>filters.searchInput: {filters.searchInput}</span>
+        <span>filters.searchInput: {filters.searchInput}</span> */}
         <h4>Listing Results ({data.length}):</h4>
         <div className="listingTable" style={{height:700, overflow:'auto'}}>
 

@@ -1,6 +1,9 @@
 
 # LandWatcher
 A simple property listing with searching and saving
+<!-- image link -->
+![Screenshot](Screenshot.png)
+
 
 ## Tool versions
 Would be nice to have test builds of a couple of other ruby versions in ci but just sticking with a single version for simplicity.
