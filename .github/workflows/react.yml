@@ -16,17 +16,17 @@ jobs:
       with:
         node-version: 24.x
     - name: Install yarn dependencies
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         dir: 'client'
         cmd: install
     - name: Build client
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         dir: 'client'
         cmd: build
     - name: Test client
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         dir: 'client'
         cmd: test
